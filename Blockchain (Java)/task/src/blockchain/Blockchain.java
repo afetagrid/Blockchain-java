@@ -6,18 +6,20 @@ import java.util.Objects;
 
 public class Blockchain {
     private final List<Block> blocks;
+    private final int numberOfZeros;
 
-    public Blockchain() {
+    public Blockchain(int numberOfZeros) {
         this.blocks = new ArrayList<>();
+        this.numberOfZeros = numberOfZeros;
     }
 
     public void newBlock() {
         if (blocks.size() == 0) {
-            blocks.add(new Block("0"));
+            blocks.add(new Block("0", numberOfZeros));
             return;
         }
         String previousHash = blocks.get(blocks.size() - 1).getHash();
-        blocks.add(new Block(previousHash));
+        blocks.add(new Block(previousHash, numberOfZeros));
     }
 
     public boolean validateBlockchain() {
