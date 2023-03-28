@@ -321,29 +321,6 @@ files:
         }
     }
   learner_created: true
-- name: src/blockchain/utils/MagicNumberUtil.java
-  visible: true
-  text: |
-    package blockchain.utils;
-
-    import java.util.Random;
-
-    public class MagicNumberUtil {
-
-        public static long proofOfWork(String input, int numberOfZeros) {
-            Random random = new Random();
-            long magicNumber = random.nextLong();
-            StringBuilder zeros = new StringBuilder();
-            for (int i = 0; i < numberOfZeros; i++) {
-                zeros.append("0");
-            }
-            while (!StringUtil.applySha256(input + magicNumber).startsWith(zeros.toString())) {
-                magicNumber = random.nextLong();
-            }
-            return magicNumber;
-        }
-    }
-  learner_created: true
 - name: src/blockchain/Block.java
   visible: true
   text: |
@@ -423,6 +400,12 @@ files:
 
     }
   learner_created: true
+- name: src/blockchain/Miner.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5415#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Tue, 28 Mar 2023 20:13:12 UTC"
 record: -1

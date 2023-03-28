@@ -1,55 +1,50 @@
 package blockchain;
 
-import blockchain.utils.MagicNumberUtil;
-import blockchain.utils.StringUtil;
-
-import java.util.Date;
-
 public final class Block {
-    private static Long numberOfBlocks = 0L;
 
+    private final Integer minerId;
     private final Long id;
     private final Long timeStamp;
-    private final Long magicNumber;
     private final String previousHash;
+    private final Long magicNumber;
     private final String hash;
 
-    private final Long time;
+    private Long generatedTime;
+    private String numberOfZerosStatus;
 
-    public Block(String previousHash, int numberOfZeros) {
-        long start = System.currentTimeMillis();
-
-        this.id = ++numberOfBlocks;
-        this.timeStamp = new Date().getTime();
+    public Block(Integer minerId, Long id, Long timeStamp, String previousHash, Long magicNumber, String hash) {
+        this.minerId = minerId;
+        this.id = id;
+        this.timeStamp = timeStamp;
         this.previousHash = previousHash;
+        this.magicNumber = magicNumber;
+        this.hash = hash;
+    }
 
-        String concatFields = concatFields();
-        this.magicNumber = MagicNumberUtil.proofOfWork(concatFields, numberOfZeros);
-        this.hash = StringUtil.applySha256(concatFields + magicNumber);
-
-        long finish = System.currentTimeMillis();
-        time = (finish - start) / 1000;
+    public Block(Block b) {
+        this.minerId = b.minerId;
+        this.id = b.id;
+        this.timeStamp = b.timeStamp;
+        this.previousHash = b.previousHash;
+        this.magicNumber = b.magicNumber;
+        this.hash = b.hash;
     }
 
     @Override
     public String toString() {
         return "Block:" + '\n' +
+                "Created by miner # " + minerId + '\n' +
                 "Id: " + id + '\n' +
                 "Timestamp: " + timeStamp + '\n' +
                 "Magic number: " + magicNumber + '\n' +
                 "Hash of the previous block:\n" + previousHash + '\n' +
                 "Hash of the block:\n" + hash + '\n' +
-                "Block was generating for " + time + " seconds\n";
+                "Block was generating for " + generatedTime + " seconds\n" +
+                numberOfZerosStatus + '\n';
     }
 
-    private String concatFields() {
-        return id.toString() +
-                timeStamp.toString() +
-                previousHash;
-    }
-
-    public static Long getNumberOfBlocks() {
-        return numberOfBlocks;
+    public Integer getMinerId() {
+        return minerId;
     }
 
     public Long getId() {
@@ -60,6 +55,10 @@ public final class Block {
         return timeStamp;
     }
 
+    public String getPreviousHash() {
+        return previousHash;
+    }
+
     public Long getMagicNumber() {
         return magicNumber;
     }
@@ -68,8 +67,11 @@ public final class Block {
         return hash;
     }
 
-    public String getPreviousHash() {
-        return previousHash;
+    public void setGeneratedTime(Long generatedTime) {
+        this.generatedTime = generatedTime;
     }
 
+    public void setNumberOfZerosStatus(String numberOfZerosStatus) {
+        this.numberOfZerosStatus = numberOfZerosStatus;
+    }
 }
