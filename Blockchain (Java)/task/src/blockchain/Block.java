@@ -45,13 +45,14 @@ public final class Block {
     @Override
     public String toString() {
         return "Block:" + '\n' +
-                "Created by miner # " + minerId + '\n' +
+                "Created by: miner" + minerId + '\n' +
+                "miner" + minerId + " gets 100 VC\n" +
                 "Id: " + id + '\n' +
                 "Timestamp: " + timeStamp + '\n' +
                 "Magic number: " + magicNumber + '\n' +
                 "Hash of the previous block:\n" + previousHash + '\n' +
                 "Hash of the block:\n" + hash + '\n' +
-                "Block data:" + blockData + '\n' +
+                "Block data:\n" + blockData + '\n' +
                 "Block was generating for " + generatedTime + " seconds\n" +
                 numberOfZerosStatus + '\n';
     }

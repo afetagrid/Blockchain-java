@@ -44,7 +44,7 @@ public class Miner implements Runnable {
 
             Long myBlockId = lastBlock.getId() + 1;
             Long myBlockTimestamp = new Date().getTime();
-            String myMessage = (lastBlock.getId() == 0L) ? " no message" : message;
+            String myMessage = (lastBlock.getId() == 0L) ? "No transactions" : message;
             byte[] myMessageSign = StringUtil.sign(myMessage, keyPair.getPrivate());
             String myBlockPreviousHash = lastBlock.getHash();
 
@@ -53,7 +53,7 @@ public class Miner implements Runnable {
             long start = System.currentTimeMillis();
             Long myMagicNumber = getProofOfWork(myBlockFields, blockchain.getNumberOfZeros());
             long finish = System.currentTimeMillis();
-            long time = (finish - start) / 1000;
+            long time = finish - start;
 
             String myBlockHash = StringUtil.applySha256(myBlockFields + myMagicNumber);
 

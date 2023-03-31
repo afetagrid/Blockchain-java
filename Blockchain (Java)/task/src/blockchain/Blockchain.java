@@ -3,6 +3,7 @@ package blockchain;
 import blockchain.utils.StringUtil;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.locks.Lock;
@@ -20,6 +21,23 @@ public class Blockchain {
     public Blockchain() {
         this.blocks = new ArrayList<>();
         this.numberOfZeros = 0;
+    }
+
+    private int getVirtualCoinsForMiner(Integer minerId) {
+        int total = 100;
+        for (Block block : blocks) {
+            if (block.getBlockData().equals("No transactions")) {
+                continue;
+            }
+            String[] words = block.getBlockData().split(" ");
+            if (words[0].equals("miner" + minerId)) {
+                total -= Integer.parseInt(words[2]);
+            }
+            if (words[5].equals("miner" + minerId)) {
+                total += Integer.parseInt(words[2]);
+            }
+        }
+        return total;
     }
 
     private boolean validateBlockchain(Block newBlock) {
@@ -41,6 +59,9 @@ public class Blockchain {
                 return false;
             }
             if (!Objects.equals(blocks.get(blocks.size() - 1).getHash(), newBlock.getPreviousHash())) {
+                return false;
+            }
+            if (getVirtualCoinsForMiner(newBlock.getMinerId()) < 0) {
                 return false;
             }
         }
