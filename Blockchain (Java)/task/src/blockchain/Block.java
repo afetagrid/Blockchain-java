@@ -1,11 +1,15 @@
 package blockchain;
 
+import java.security.PublicKey;
+
 public final class Block {
 
     private final Integer minerId;
     private final Long id;
     private final Long timeStamp;
     private final String blockData;
+    private final byte[] signature;
+    private final PublicKey publicKey;
     private final String previousHash;
     private final Long magicNumber;
     private final String hash;
@@ -13,12 +17,14 @@ public final class Block {
     private Long generatedTime;
     private String numberOfZerosStatus;
 
-    public Block(Integer minerId, Long id, Long timeStamp, String blockData,
-                 String previousHash, Long magicNumber, String hash) {
+    public Block(Integer minerId, Long id, Long timeStamp, String blockData, byte[] signature,
+                 PublicKey publicKey, String previousHash, Long magicNumber, String hash) {
         this.minerId = minerId;
         this.id = id;
         this.timeStamp = timeStamp;
         this.blockData = blockData;
+        this.signature = signature;
+        this.publicKey = publicKey;
         this.previousHash = previousHash;
         this.magicNumber = magicNumber;
         this.hash = hash;
@@ -29,6 +35,8 @@ public final class Block {
         this.id = b.id;
         this.timeStamp = b.timeStamp;
         this.blockData = b.blockData;
+        this.signature = b.signature;
+        this.publicKey = b.publicKey;
         this.previousHash = b.previousHash;
         this.magicNumber = b.magicNumber;
         this.hash = b.hash;
@@ -62,6 +70,14 @@ public final class Block {
 
     public String getBlockData() {
         return blockData;
+    }
+
+    public byte[] getSignature() {
+        return signature;
+    }
+
+    public PublicKey getPublicKey() {
+        return publicKey;
     }
 
     public String getPreviousHash() {

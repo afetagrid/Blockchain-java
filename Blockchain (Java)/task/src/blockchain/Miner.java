@@ -2,16 +2,19 @@ package blockchain;
 
 import blockchain.utils.StringUtil;
 
+import java.security.KeyPair;
 import java.util.Date;
 import java.util.Random;
 
 public class Miner implements Runnable {
     private final Integer id;
+    private final KeyPair keyPair;
     private final String message;
     private final Blockchain blockchain;
 
     public Miner(Integer id, String message, Blockchain blockchain) {
         this.id = id;
+        this.keyPair = StringUtil.generateKeys();
         this.message = message;
         this.blockchain = blockchain;
     }
@@ -42,6 +45,7 @@ public class Miner implements Runnable {
             Long myBlockId = lastBlock.getId() + 1;
             Long myBlockTimestamp = new Date().getTime();
             String myMessage = (lastBlock.getId() == 0L) ? " no message" : message;
+            byte[] myMessageSign = StringUtil.sign(myMessage, keyPair.getPrivate());
             String myBlockPreviousHash = lastBlock.getHash();
 
             String myBlockFields = id.toString() + myBlockId.toString() + myBlockTimestamp.toString() +
@@ -53,8 +57,8 @@ public class Miner implements Runnable {
 
             String myBlockHash = StringUtil.applySha256(myBlockFields + myMagicNumber);
 
-            Block myBlock = new Block(id, myBlockId, myBlockTimestamp, myMessage,
-                    myBlockPreviousHash, myMagicNumber, myBlockHash);
+            Block myBlock = new Block(id, myBlockId, myBlockTimestamp, myMessage, myMessageSign,
+                    keyPair.getPublic(), myBlockPreviousHash, myMagicNumber, myBlockHash);
             success = blockchain.addNewBlock(myBlock, time);
         }
     }

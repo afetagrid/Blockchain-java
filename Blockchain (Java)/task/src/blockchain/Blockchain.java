@@ -23,16 +23,28 @@ public class Blockchain {
     }
 
     private boolean validateBlockchain(Block newBlock) {
+        if (!StringUtil.hasNumberOfZeros(newBlock.getHash(), numberOfZeros)) {
+            return false;
+        }
+        if (!StringUtil.verify(newBlock.getBlockData(), newBlock.getSignature(), newBlock.getPublicKey())) {
+            return false;
+        }
         if (blocks.size() == 0) {
-            if (!StringUtil.hasNumberOfZeros(newBlock.getHash(), numberOfZeros)) {
+            if (newBlock.getId() != 1L) {
+                return false;
+            }
+            if (!Objects.equals("0", newBlock.getPreviousHash())) {
                 return false;
             }
         } else {
-            if (!Objects.equals(blocks.get(blocks.size() - 1).getHash(), newBlock.getPreviousHash()) ||
-                    !StringUtil.hasNumberOfZeros(newBlock.getHash(), numberOfZeros)) {
+            if (newBlock.getId() != blocks.get(blocks.size() - 1).getId() + 1L) {
+                return false;
+            }
+            if (!Objects.equals(blocks.get(blocks.size() - 1).getHash(), newBlock.getPreviousHash())) {
                 return false;
             }
         }
+
         return true;
     }
 
@@ -40,7 +52,8 @@ public class Blockchain {
         readLock.lock();
         if (blocks.size() == 0) {
             readLock.unlock();
-            return new Block(-1, 0L, -1L,"no messages", "0", -1L, "0");
+            return new Block(null, 0L, null, null, null,
+                    null, null, null, "0");
         }
         Block lastBlock = blocks.get(blocks.size() - 1);
         readLock.unlock();

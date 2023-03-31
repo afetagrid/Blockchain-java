@@ -1,75 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BlockchainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-31T07:13:49" hostname="C9607" time="0.699">
+<testsuite name="BlockchainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-31T12:24:06" hostname="C9607" time="1.369">
   <properties/>
-  <testcase name="start" classname="BlockchainTest" time="0.699"/>
+  <testcase name="start" classname="BlockchainTest" time="1.369"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 Block:
-Created by miner # 4
+Created by miner # 1
 Id: 1
-Timestamp: 1680246829099
-Magic number: -4272809441240368668
+Timestamp: 1680265446608
+Magic number: -584291762374023962
 Hash of the previous block:
 0
 Hash of the block:
-94dc3912548ef89c13f9af32d1ab512e588eb18f11b5264ed671fb444febe771
+eaf53a15de425c4bdec405b8ab937dd5a806ae272b246fbb1b91bc867a93fc9f
 Block data: no message
 Block was generating for 0 seconds
 N was increased to 1
 
 Block:
-Created by miner # 3
+Created by miner # 2
 Id: 2
-Timestamp: 1680246829115
-Magic number: -7622241648474408435
+Timestamp: 1680265446676
+Magic number: -3781737991416654272
 Hash of the previous block:
-94dc3912548ef89c13f9af32d1ab512e588eb18f11b5264ed671fb444febe771
+eaf53a15de425c4bdec405b8ab937dd5a806ae272b246fbb1b91bc867a93fc9f
 Hash of the block:
-024272624e45503f39053fa39a7e9261c91b519e6e57118fc9405383d5748580
+03c3114f92e5a6d766b22f912c5a05889fb4fd39009b08e5676c5ed149a18bbe
 Block data:
-Message no. 3
+Message no. 2
 Block was generating for 0 seconds
 N was increased to 2
 
 Block:
-Created by miner # 2
+Created by miner # 3
 Id: 3
-Timestamp: 1680246829117
-Magic number: 1111242051363571107
+Timestamp: 1680265446764
+Magic number: -5849911049219549572
 Hash of the previous block:
-024272624e45503f39053fa39a7e9261c91b519e6e57118fc9405383d5748580
+03c3114f92e5a6d766b22f912c5a05889fb4fd39009b08e5676c5ed149a18bbe
 Hash of the block:
-0019887506c6a46de819f23109acf11f70a8760d823dbfeda9c744e09aebae69
+0058a00989b180d9e814db09f33357e6fcfe4dfa647dcc978cafa7699d35feb1
 Block data:
-Message no. 2
+Message no. 3
 Block was generating for 0 seconds
 N was increased to 3
 
 Block:
-Created by miner # 5
+Created by miner # 4
 Id: 4
-Timestamp: 1680246829137
-Magic number: -3209065440126683818
+Timestamp: 1680265446808
+Magic number: 6494808958535388740
 Hash of the previous block:
-0019887506c6a46de819f23109acf11f70a8760d823dbfeda9c744e09aebae69
+0058a00989b180d9e814db09f33357e6fcfe4dfa647dcc978cafa7699d35feb1
 Hash of the block:
-000684b92155f4d0ed5390825afa8ba3f07a7baaa401b3182d0768d01343c7a6
+000f2fdb8f09a487f375e66d91dba14c6d54da39458491bd9037edc758b91857
 Block data:
-Message no. 5
+Message no. 4
 Block was generating for 0 seconds
 N was increased to 4
 
 Block:
-Created by miner # 1
+Created by miner # 5
 Id: 5
-Timestamp: 1680246829171
-Magic number: 5155611479535237542
+Timestamp: 1680265446875
+Magic number: -2107396740401839235
 Hash of the previous block:
-000684b92155f4d0ed5390825afa8ba3f07a7baaa401b3182d0768d01343c7a6
+000f2fdb8f09a487f375e66d91dba14c6d54da39458491bd9037edc758b91857
 Hash of the block:
-00008935a80314872012b64c7ab941d7765a2b73deaa695aac31a381b550a08a
+000020f8bd3c97d4091b0f73a0c082d9fde68768c0ce68b7174d555232b92689
 Block data:
-Message no. 1
+Message no. 5
 Block was generating for 0 seconds
 N was increased to 5
 
@@ -78,67 +78,67 @@ Start test 2?[0m
 Block:
 Created by miner # 1
 Id: 1
-Timestamp: 1680246829414
-Magic number: 4421537428954808639
+Timestamp: 1680265447187
+Magic number: -3808570600768485665
 Hash of the previous block:
 0
 Hash of the block:
-32beaa36779010dee77643aa37d3a8164ab5461dca55e291403bee24a607d42f
+19c43b5e2b461563590c0789cc64957d532f7ac06af42f52fc3ef9b50f28cb1c
 Block data: no message
 Block was generating for 0 seconds
 N was increased to 1
 
 Block:
-Created by miner # 4
+Created by miner # 2
 Id: 2
-Timestamp: 1680246829416
-Magic number: -4442129766245119321
+Timestamp: 1680265447212
+Magic number: 3365806481693825307
 Hash of the previous block:
-32beaa36779010dee77643aa37d3a8164ab5461dca55e291403bee24a607d42f
+19c43b5e2b461563590c0789cc64957d532f7ac06af42f52fc3ef9b50f28cb1c
 Hash of the block:
-0820b4dd83e3f067f1466463729811f49a7a9b63a26b63192ba8410a6f8d4619
+03146360769720b1c1a379c8f08932b4ce498969a6cfd713617f426a0ec8763d
 Block data:
-Message no. 4
+Message no. 2
 Block was generating for 0 seconds
 N was increased to 2
 
 Block:
 Created by miner # 3
 Id: 3
-Timestamp: 1680246829416
-Magic number: -7327823252479883421
+Timestamp: 1680265447226
+Magic number: -7798837372227572198
 Hash of the previous block:
-0820b4dd83e3f067f1466463729811f49a7a9b63a26b63192ba8410a6f8d4619
+03146360769720b1c1a379c8f08932b4ce498969a6cfd713617f426a0ec8763d
 Hash of the block:
-00efb8ac436f4f814f4e610d82e901f82592c0d1321d9a42ea6038bf350a342e
+008a9b26e02f4c7408bfd16b2994af52229ce84efc0d596231091609f12fdc67
 Block data:
 Message no. 3
 Block was generating for 0 seconds
 N was increased to 3
 
 Block:
-Created by miner # 2
+Created by miner # 4
 Id: 4
-Timestamp: 1680246829422
-Magic number: 5072290795722706384
+Timestamp: 1680265447252
+Magic number: -8176878745955700638
 Hash of the previous block:
-00efb8ac436f4f814f4e610d82e901f82592c0d1321d9a42ea6038bf350a342e
+008a9b26e02f4c7408bfd16b2994af52229ce84efc0d596231091609f12fdc67
 Hash of the block:
-000b141b976ee949f5d664913c3aa562a4902827ce7e8ffee61672b765fdf2d5
+000aeca3d72cae8dfba08a87c7276b62f9301c284fb74b168ac20f2fa95a536b
 Block data:
-Message no. 2
+Message no. 4
 Block was generating for 0 seconds
 N was increased to 4
 
 Block:
 Created by miner # 5
 Id: 5
-Timestamp: 1680246829476
-Magic number: 2495673177300457056
+Timestamp: 1680265447317
+Magic number: 1503302509864016869
 Hash of the previous block:
-000b141b976ee949f5d664913c3aa562a4902827ce7e8ffee61672b765fdf2d5
+000aeca3d72cae8dfba08a87c7276b62f9301c284fb74b168ac20f2fa95a536b
 Hash of the block:
-0000db93173f4d22fe47f1f8b32603eda1b1f6c15496ccfba70008267fb01b1a
+000014f98afbcec4c2d81c4a9cdb31474c5aee74fc3d4d2446566bfad96b87eb
 Block data:
 Message no. 5
 Block was generating for 0 seconds

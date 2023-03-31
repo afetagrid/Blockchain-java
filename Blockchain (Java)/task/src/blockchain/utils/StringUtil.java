@@ -1,9 +1,7 @@
 package blockchain.utils;
 
-import blockchain.Block;
-
 import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
+import java.security.*;
 
 public class StringUtil {
 
@@ -29,6 +27,39 @@ public class StringUtil {
             return hexString.toString();
         }
         catch(Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static KeyPair generateKeys() {
+        try {
+            KeyPairGenerator keygen = KeyPairGenerator.getInstance("RSA");
+            SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+            keygen.initialize(1024, random);
+            return keygen.generateKeyPair();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static byte[] sign(String input, PrivateKey sk) {
+        try {
+            Signature signature = Signature.getInstance("SHA1withRSA");
+            signature.initSign(sk);
+            signature.update(input.getBytes());
+            return signature.sign();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean verify(String input, byte[] signedInput, PublicKey pk) {
+        try {
+            Signature signature = Signature.getInstance("SHA1withRSA");
+            signature.initVerify(pk);
+            signature.update(input.getBytes());
+            return signature.verify(signedInput);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
