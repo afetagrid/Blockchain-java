@@ -40,7 +40,7 @@ public class Blockchain {
         readLock.lock();
         if (blocks.size() == 0) {
             readLock.unlock();
-            return new Block(-1, 0L, -1L, "0", -1L, "0");
+            return new Block(-1, 0L, -1L,"no messages", "0", -1L, "0");
         }
         Block lastBlock = blocks.get(blocks.size() - 1);
         readLock.unlock();

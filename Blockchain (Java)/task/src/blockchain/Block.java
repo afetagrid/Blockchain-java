@@ -5,6 +5,7 @@ public final class Block {
     private final Integer minerId;
     private final Long id;
     private final Long timeStamp;
+    private final String blockData;
     private final String previousHash;
     private final Long magicNumber;
     private final String hash;
@@ -12,10 +13,12 @@ public final class Block {
     private Long generatedTime;
     private String numberOfZerosStatus;
 
-    public Block(Integer minerId, Long id, Long timeStamp, String previousHash, Long magicNumber, String hash) {
+    public Block(Integer minerId, Long id, Long timeStamp, String blockData,
+                 String previousHash, Long magicNumber, String hash) {
         this.minerId = minerId;
         this.id = id;
         this.timeStamp = timeStamp;
+        this.blockData = blockData;
         this.previousHash = previousHash;
         this.magicNumber = magicNumber;
         this.hash = hash;
@@ -25,6 +28,7 @@ public final class Block {
         this.minerId = b.minerId;
         this.id = b.id;
         this.timeStamp = b.timeStamp;
+        this.blockData = b.blockData;
         this.previousHash = b.previousHash;
         this.magicNumber = b.magicNumber;
         this.hash = b.hash;
@@ -39,6 +43,7 @@ public final class Block {
                 "Magic number: " + magicNumber + '\n' +
                 "Hash of the previous block:\n" + previousHash + '\n' +
                 "Hash of the block:\n" + hash + '\n' +
+                "Block data:" + blockData + '\n' +
                 "Block was generating for " + generatedTime + " seconds\n" +
                 numberOfZerosStatus + '\n';
     }
@@ -53,6 +58,10 @@ public final class Block {
 
     public Long getTimeStamp() {
         return timeStamp;
+    }
+
+    public String getBlockData() {
+        return blockData;
     }
 
     public String getPreviousHash() {

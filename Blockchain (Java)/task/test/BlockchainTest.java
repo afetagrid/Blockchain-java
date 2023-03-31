@@ -44,9 +44,9 @@ class Block {
                 .filter(e -> e.length() > 0)
                 .collect(Collectors.toList());
 
-        if (lines.size() != 11) {
+        if (lines.size() < 12) {
             throw new BlockParseException("Every block should " +
-                    "contain 11 lines of data");
+                    "contain at least 12 lines of data");
         }
 
         if (!lines.get(0).equals("Block:")) {
@@ -121,11 +121,6 @@ class Block {
                     "should be \"Hash of the block:\"");
         }
 
-        if (!lines.get(10).toUpperCase().startsWith("N ")) {
-            throw new BlockParseException("11-th line of every block " +
-                    "should be state what happened to N");
-        }
-
         String prevhash = lines.get(6).strip();
         String hash = lines.get(8).strip();
 
@@ -138,6 +133,11 @@ class Block {
 
         block.hash = hash;
         block.hashprev = prevhash;
+
+        if (!lines.get(9).startsWith("Block data:")) {
+            throw new BlockParseException("10-th line of every block " +
+                    "should start with \"Block data:\"");
+        }
 
         return block;
     }

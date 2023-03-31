@@ -7,10 +7,12 @@ import java.util.Random;
 
 public class Miner implements Runnable {
     private final Integer id;
+    private final String message;
     private final Blockchain blockchain;
 
-    public Miner(Integer id, Blockchain blockchain) {
+    public Miner(Integer id, String message, Blockchain blockchain) {
         this.id = id;
+        this.message = message;
         this.blockchain = blockchain;
     }
 
@@ -39,9 +41,11 @@ public class Miner implements Runnable {
 
             Long myBlockId = lastBlock.getId() + 1;
             Long myBlockTimestamp = new Date().getTime();
+            String myMessage = (lastBlock.getId() == 0L) ? " no message" : message;
             String myBlockPreviousHash = lastBlock.getHash();
 
-            String myBlockFields = id.toString() + myBlockId.toString() + myBlockTimestamp.toString() + myBlockPreviousHash;
+            String myBlockFields = id.toString() + myBlockId.toString() + myBlockTimestamp.toString() +
+                    myMessage + myBlockPreviousHash;
             long start = System.currentTimeMillis();
             Long myMagicNumber = getProofOfWork(myBlockFields, blockchain.getNumberOfZeros());
             long finish = System.currentTimeMillis();
@@ -49,7 +53,8 @@ public class Miner implements Runnable {
 
             String myBlockHash = StringUtil.applySha256(myBlockFields + myMagicNumber);
 
-            Block myBlock = new Block(id, myBlockId, myBlockTimestamp, myBlockPreviousHash, myMagicNumber, myBlockHash);
+            Block myBlock = new Block(id, myBlockId, myBlockTimestamp, myMessage,
+                    myBlockPreviousHash, myMagicNumber, myBlockHash);
             success = blockchain.addNewBlock(myBlock, time);
         }
     }
